@@ -21,8 +21,7 @@ MCFLAGS = -mcpu=$(MCU) -mthumb -mlittle-endian -mfpu=fpv4-sp-d16 -mfloat-abi=har
 STM32_INCLUDES = -I$(LIBPATH)/Libraries/CMSIS/Device/ST/STM32F4xx/Include/ \
 	-I$(LIBPATH)/Libraries/CMSIS/Include/ \
 	-I$(LIBPATH)/Libraries/STM32F4xx_StdPeriph_Driver/inc/ \
-	-I./inc/ \
-	-I./inc/BLE/
+	-I./inc/
 
 OPTIMIZE       = -Os
 
@@ -37,12 +36,6 @@ SRC = ./src/main.c \
 	./src/debug.c \
 	./src/stm32f4xx_it.c \
 	./src/system_stm32f4xx.c \
-	./src/BLE/io_support.c \
-	./src/BLE/acilib.c \
-	./src/BLE/aci_queue.c \
-	./src/BLE/aci_setup.c \
-	./src/BLE/hal_aci_tl.c \
-	./src/BLE/lib_aci.c \
 	$(LIBPATH)/Libraries/STM32F4xx_StdPeriph_Driver/src/misc.c \
 	$(LIBPATH)/Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_adc.c \
 	$(LIBPATH)/Libraries/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_can.c \

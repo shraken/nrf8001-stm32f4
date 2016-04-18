@@ -43,22 +43,6 @@
 
 extern uint32_t _millisCounter;
 
-#define USARTx_IRQHANDLER   USART2_IRQHandler
-
-#define RXBUFFERSIZE   20
-
-/* Private macro -------------------------------------------------------------*/
-#define countof(a)   (sizeof(a) / sizeof(*(a)))
-
-/* Private variables ---------------------------------------------------------*/
-extern uint8_t uart_buffer[];
-//uint8_t NbrOfDataToTransfer = TXBUFFERSIZE;
-uint8_t NbrOfDataToRead = RXBUFFERSIZE;
-//__IO uint8_t TxCounter = 0; 
-__IO uint32_t RxCounter = 0; 
-
-uint8_t Rx_Flag_read = 0;
-
 /******************************************************************************/
 /*            Cortex-M4 Processor Exceptions Handlers                         */
 /******************************************************************************/
@@ -159,23 +143,6 @@ void PendSV_Handler(void)
 void SysTick_Handler(void)
 {
   _millisCounter++;
-}
-
-/**
-  * @brief  This function handles USARTx global interrupt request.
-  * @param  None
-  * @retval None
-  */
-void USARTx_IRQHANDLER(void)
-{
-  if(USART_GetITStatus(USART2, USART_IT_RXNE) != RESET) {
-    /* Read one byte from the receive data register */
-    uart_buffer[RxCounter++ % RXBUFFERSIZE] = USART_ReceiveData(USART2);
-
-    if ((RxCounter % RXBUFFERSIZE) == 0) {
-      Rx_Flag_read = 1;
-    }
-  }
 }
 
 /******************************************************************************/
