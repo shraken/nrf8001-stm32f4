@@ -2,6 +2,8 @@
 
 An example showing the ble-sdk-arduino library for the Nordic nrf8001 device family ported to the ST STM32F407/discovery kit.  A UART RX interrupt buffers the characters entered beforing sending a 20 byte notification packet.
 
+The porting effort is described in a [blog entry](http://shrakeblogshere.blogspot.com/2016/04/nordic-nrf8001-library-for-st-stm32f4xx.html) I posted.
+
 ## Requirements
 
 Install the GNU ARM Embedded Toolchain:
